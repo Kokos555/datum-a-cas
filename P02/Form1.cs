@@ -16,11 +16,20 @@ namespace P02
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            DateTime test = DateTime.Now;
-            MessageBox.Show(string.Format($"{test}"));
+            DateTime narozeni = dateTimePicker1.Value;
+            DateTime dnesni_datum = DateTime.Now;
+            int rok = dnesni_datum.Year - narozeni.Year;
+            narozeni.AddYears(rok);
+            if (narozeni.Day > dnesni_datum.Day)
+            {
+                rok--;
+            }
+            MessageBox.Show(String.Format($"{rok}"));
+            
+            //30. října 2020, 22 let. 30
+
         }
     }
 }
