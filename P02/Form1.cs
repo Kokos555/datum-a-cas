@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace P02
 {
@@ -19,15 +20,32 @@ namespace P02
         private void button1_Click_1(object sender, EventArgs e)
         {
             DateTime narozeni = dateTimePicker1.Value;
-            DateTime dnesni_datum = DateTime.Now;
-            int rok = dnesni_datum.Year - narozeni.Year;
-            narozeni.AddYears(rok);
-            if (narozeni.Day > dnesni_datum.Day)
+            DateTime Now = DateTime.Now;
+            int years = Now.Year - narozeni.Year;
+            if (Now < narozeni.AddYears(years))
             {
-                rok--;
+                years--;
             }
-            MessageBox.Show(String.Format($"{rok}"));
             
+
+            MessageBox.Show($"Je ti {years} let {months} měsíců {days} dní a {hour} hodin");
+
+            //int months = Now.Month - narozeni.Month;
+
+            /*if (Now.Day < narozeni.Day)
+            {
+                months--;
+            }
+
+            if (months < 0)
+            {
+                years--;
+                months += 12;
+            }
+
+            int days = (Now - narozeni.AddMonths((years * 12) + months)).Days;
+            int hour = Now.Hour;*/
+
             //30. října 2020, 22 let. 30
 
         }
