@@ -28,7 +28,7 @@ namespace P02
             }
             
 
-            MessageBox.Show($"Je ti {years} let {months} měsíců {days} dní a {hour} hodin");
+            //MessageBox.Show($"Je ti {years} let {months} měsíců {days} dní a {hour} hodin");
 
             //int months = Now.Month - narozeni.Month;
 
