@@ -30,7 +30,11 @@ namespace P06
             DateTime datum = dateTimePicker1.Value;
             int cislo = PocetDni(65, datum);
             if (cislo>=65) { 
-                MessageBox.Show(String.Format($""));
+                MessageBox.Show(String.Format($"Osoba dosáhla důchodového věku, a v dúchodu strávila {cislo} dní"));
+            }
+            else
+            {
+                MessageBox.Show(String.Format($"Osoba nedosáhla důchodového věku a do důchodu chybí {Math.Abs(cislo)} dnů"));
             }
 
         }
@@ -38,6 +42,15 @@ namespace P06
         private void button2_Click(object sender, EventArgs e)
         {
             DateTime datum = dateTimePicker1.Value;
+            int cislo = PocetDni(0, datum);
+            if (cislo > 0)
+            {
+                MessageBox.Show(String.Format($"Od narození dané osoby uplinulo {cislo} dní"));
+            }
+            else
+            {
+                MessageBox.Show(string.Format("Daná osoba se ještě nenarodila"));
+            }
         }
     }
 }
