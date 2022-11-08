@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -83,10 +84,24 @@ namespace P03
                 zprava = string.Format("Toto není rodné číslo, protože není dělitelné číslem 11");
                 return false;
             }
-            int rokc = Int32.Parse(rok);
+            int rokc = Int32.Parse(rok); //Zjistit rok, jestli 2003 nebo 1908
             int mesc = Int32.Parse(mesic);
             int denc = Int32.Parse(den);
-
+            if (mesc > 50)
+            {
+                mesc -= 50;
+            }
+            if (mesc < 1 || mesc > 12)
+            {
+                zprava = String.Format("Špatný měsíc");
+                return false;
+            }
+            int pocetdni = DateTime.DaysInMonth(rokc, mesc);
+            if (denc < 1 || denc > pocetdni)
+            {
+                zprava = String.Format("Špatný den!");
+                return false;
+            } 
             return true;
         }
 
@@ -119,7 +134,16 @@ namespace P03
                 }
             }else
             {
-
+                if (JeRodneCislo(datum, out DateTime narozen, out string zprava))
+                {
+                    MessageBox.Show(string.Format($"{zprava}"));
+                    label1.Text = String.Format($"Věk: {Vek(narozen, out int pocet_dny)}");
+                    label2.Text = String.Format($"Dnů: {pocet_dny}");
+                }
+                else
+                {
+                    MessageBox.Show(string.Format($"{zprava}"));
+                }
             }
         }
     }

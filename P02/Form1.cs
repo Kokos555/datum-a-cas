@@ -22,17 +22,17 @@ namespace P02
             DateTime narozeni = dateTimePicker1.Value;
             DateTime Now = DateTime.Now;
             int years = Now.Year - narozeni.Year;
-            if (Now < narozeni.AddYears(years))
+            /*if (Now < narozeni.AddYears(years))
             {
                 years--;
-            }
+            }*/
             
 
-            //MessageBox.Show($"Je ti {years} let {months} měsíců {days} dní a {hour} hodin");
+            
 
-            //int months = Now.Month - narozeni.Month;
+            int months = Now.Month - narozeni.Month;
 
-            /*if (Now.Day < narozeni.Day)
+            if (Now.Day < narozeni.Day)
             {
                 months--;
             }
@@ -44,7 +44,8 @@ namespace P02
             }
 
             int days = (Now - narozeni.AddMonths((years * 12) + months)).Days;
-            int hour = Now.Hour;*/
+            int hour = Now.Hour;
+            MessageBox.Show($"Je ti {years} let {months} měsíců {days} dní a {hour} hodin");
 
             //30. října 2020, 22 let. 30
 

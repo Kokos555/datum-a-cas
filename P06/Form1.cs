@@ -45,7 +45,7 @@ namespace P06
             int cislo = PocetDni(0, datum);
             if (cislo > 0)
             {
-                MessageBox.Show(String.Format($"Od narození dané osoby uplinulo {cislo} dní"));
+                MessageBox.Show(String.Format($"Od narození dané osoby uplynulo {cislo} dní"));
             }
             else
             {
